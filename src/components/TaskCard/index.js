@@ -5,21 +5,22 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native';
+import { format } from 'date-fns';
 
 import styles from './styles';
 
-import blank from '../../assets/icon/icon-blank.png';
+import typeIcons from "../../utils/typeIcons";
 
-export default function TaskCard({ done }) {
+export default function TaskCard({ data }) {
   return (
-    <TouchableOpacity style={[styles.card, done && styles.cardDone]}>
+    <TouchableOpacity style={[styles.card, data.done && styles.cardDone]}>
       <View style={styles.cardLeft}>
-        <Image source={blank} style={styles.typeActived} />
-        <Text style={styles.cardTitle}>Entregar Relátorio</Text>
+        <Image source={typeIcons[data.type]} style={styles.typeActived} />
+        <Text style={styles.cardTitle}>{data.title}</Text>
       </View>
       <View style={styles.cardRight}>
-        <Text style={styles.date} >19/11/2021</Text>
-        <Text style={styles.time}>21:00</Text>
+        <Text style={styles.date} >{format(new Date(data.when), 'dd/MM/yyyy')}</Text>
+        <Text style={styles.time}>{format(new Date(data.when), 'HH:mm')}</Text>
       </View>
 
     </TouchableOpacity>

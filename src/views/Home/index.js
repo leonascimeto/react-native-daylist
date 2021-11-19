@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { Text, View, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import api from "../../services/api";
 import styles from './styles';
 
 //componentes
@@ -10,10 +11,37 @@ import TaskCard from "../../components/TaskCard";
 export default function Home() {
 
   const [filter, setFilter] = useState('today');
+  const [tasks, setTasks] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [lateCount, setLateCount] = useState();
+
+
+  async function loadTasks() {
+    setLoading(true);
+    await api.get(`/task/filter/${filter}/11:11:11:11:11:11`).then(response => {
+      setTasks(response.data);
+      setLoading(false);
+    });
+  }
+
+  async function lateVerify() {
+    await api.get(`/task/filter/late/11:11:11:11:11:11`).then(response => {
+      setLateCount(response.data.length);
+    });
+  }
+
+  function notification() {
+    setFilter('late');
+  }
+
+  useEffect(() => {
+    loadTasks();
+    lateVerify();
+  }, [filter])
 
   return (
     <View style={styles.container}>
-      <Header showNotification={true} showBack={false} />
+      <Header showNotification={true} showBack={false} pressNotification={notification} late={lateCount} />
       {/* Filtro de tarefas */}
       <View style={styles.filter}>
         <TouchableOpacity onPress={() => setFilter('all')}>
@@ -44,11 +72,17 @@ export default function Home() {
       </View>
 
       <View style={styles.title}>
-        <Text style={styles.titleText}>TAREFAS</Text>
+        <Text style={styles.titleText}>TAREFAS {filter === 'late' && ' ATRASADAS'}</Text>
       </View>
 
       <ScrollView style={styles.content} contentContainerStyle={{ alignItems: 'center' }}>
-        <TaskCard done={false} />
+
+        {
+          loading ?
+            <ActivityIndicator color='#ee8855' size={50} />
+            :
+            tasks.map(item => <TaskCard data={item} />)
+        }
       </ScrollView>
       <Footer icon={'add'} />
     </View>

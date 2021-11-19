@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     padding: 16,
     marginVertical: 10,
     width: '90%',
-    height: 100,
+    height: 90,
     borderRadius: 10,
     shadowColor: "#000",
     shadowOffset: {
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-    elevation: 5
+    elevation: 5,
   },
   cardLeft: {
     flexDirection: 'row',
