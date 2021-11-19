@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   header: {
     width: '100%',
-    height: 70,
+    height: 80,
     backgroundColor: '#000055',
     borderBottomWidth: 5,
     borderBottomColor: '#55ee22',
