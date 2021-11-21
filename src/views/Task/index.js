@@ -20,11 +20,11 @@ import typeIcons from '../../utils/typeIcons';
 import trash from '../../assets/icon/icon-trash.png';
 import DateTimeInput from '../../components/DateTimeInput/';
 
-export default function Task() {
+export default function Task({ navigation }) {
   const [done, setDone] = useState(false);
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.container}>
-      <Header showBack={true} showNotification={true} />
+      <Header showBack={true} showNotification={true} navigation={navigation} />
       <ScrollView style={{ width: '100%' }}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ marginVertical: 10 }}>
           {

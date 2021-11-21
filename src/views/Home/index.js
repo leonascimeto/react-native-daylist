@@ -8,7 +8,7 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import TaskCard from "../../components/TaskCard";
 
-export default function Home() {
+export default function Home({ navigation }) {
 
   const [filter, setFilter] = useState('today');
   const [tasks, setTasks] = useState([]);
@@ -32,6 +32,10 @@ export default function Home() {
 
   function notification() {
     setFilter('late');
+  }
+
+  function newTask() {
+    navigation.navigate('Task');
   }
 
   useEffect(() => {
@@ -84,7 +88,7 @@ export default function Home() {
             tasks.map(item => <TaskCard data={item} />)
         }
       </ScrollView>
-      <Footer icon={'add'} />
+      <Footer icon={'add'} onPress={newTask} />
     </View>
   )
 }
