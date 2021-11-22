@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import * as Network from 'expo-network';
 import api from "../../services/api";
 import styles from './styles';
 
@@ -14,18 +15,24 @@ export default function Home({ navigation }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [lateCount, setLateCount] = useState();
+  const [macaddress, setMacaddress] = useState();
 
+  async function getMacAddress() {
+    const mac = await Network.getIpAddressAsync();
+
+    setMacaddress(mac);
+  }
 
   async function loadTasks() {
     setLoading(true);
-    await api.get(`/task/filter/${filter}/11:11:11:11:11:11`).then(response => {
+    await api.get(`/task/filter/${filter}/${macaddress}`).then(response => {
       setTasks(response.data);
       setLoading(false);
     });
   }
 
   async function lateVerify() {
-    await api.get(`/task/filter/late/11:11:11:11:11:11`).then(response => {
+    await api.get(`/task/filter/late/${macaddress}`).then(response => {
       setLateCount(response.data.length);
     });
   }
@@ -38,10 +45,14 @@ export default function Home({ navigation }) {
     navigation.navigate('Task');
   }
 
+  function show(id) {
+    navigation.navigate('Task', { idTask: id });
+  }
+
   useEffect(() => {
-    loadTasks();
+    getMacAddress().then(() => loadTasks());
     lateVerify();
-  }, [filter])
+  }, [filter, macaddress])
 
   return (
     <View style={styles.container}>
@@ -85,7 +96,11 @@ export default function Home({ navigation }) {
           loading ?
             <ActivityIndicator color='#ee8855' size={50} />
             :
-            tasks.map(item => <TaskCard data={item} />)
+            tasks.map(item =>
+              <TaskCard
+                data={item}
+                onPress={() => show(item._id)}
+              />)
         }
       </ScrollView>
       <Footer icon={'add'} onPress={newTask} />

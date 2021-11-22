@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'flex-start'
   },
   imageIcon: {
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 10,
-    marginBottom: 90
+    marginBottom: 50
   },
   inputInLine: {
     flexDirection: 'row',
@@ -68,6 +68,9 @@ const styles = StyleSheet.create({
   removeIcon: {
     width: 13,
     height: 15
+  },
+  typeIconInative: {
+    opacity: .5
   }
 });
 
