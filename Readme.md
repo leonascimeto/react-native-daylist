@@ -69,8 +69,6 @@ $ npm install
 # Execute a Aplicação
 $ npm start
 
-# O servidor iniciara na porta:3000 - acesse http://localhost:3000
-
 ```
 
 Desenvolvido por Leonardo Fernandes 👨‍💻 [Entre em contato!](https://www.linkedin.com/in/leonascimentopro/)
