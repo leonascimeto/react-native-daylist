@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     opacity: .725
   },
   cardDone: {
-    opacity: 0.8
+    opacity: 0.5
   }
 });
 

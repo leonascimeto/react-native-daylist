@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'relative',
-    top: -50,
+    top: -45,
   },
   image: {
     width: 80,

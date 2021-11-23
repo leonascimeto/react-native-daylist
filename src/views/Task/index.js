@@ -86,7 +86,6 @@ export default function Task({ navigation }) {
       res.data.description && setDescription(res.data.description);
       setWhenDate(res.data.when);
       setWhenTime(res.data.when);
-      console.log('data: ', res.data)
     })
   }
 
@@ -125,7 +124,7 @@ export default function Task({ navigation }) {
       setId(navigation.state.params.idTask);
       loadTask().then(() => setLoading(false))
     }
-  }, [macaddress])
+  }, [macaddress]);
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={-120} style={styles.container}>
@@ -135,7 +134,7 @@ export default function Task({ navigation }) {
         loading ?
           <ActivityIndicator color='#ee8855' size={50} style={{ marginTop: 150 }} />
           :
-          <ScrollView style={{ width: '100%' }}>
+          <ScrollView style={{ width: '100%', marginBottom: 100 }}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ marginVertical: 10 }}>
               {
                 typeIcons.map((img, index) => img &&

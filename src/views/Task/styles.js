@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     borderColor: '#000055',
     marginHorizontal: 10,
     borderRadius: 8,
-    height: 100,
+    height: 70,
     textAlignVertical: 'top',
   },
   inLine: {

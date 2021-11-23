@@ -4,6 +4,8 @@ import Home from './src/views/Home';
 import Task from './src/views/Task';
 import QrCode from './src/views/QrCode';
 
+console.disableYellowBox = true;
+
 const Routes = createAppContainer(
   createSwitchNavigator({
     Home,
