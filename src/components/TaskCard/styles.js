@@ -9,14 +9,8 @@ const styles = StyleSheet.create({
     width: '90%',
     height: 90,
     borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 5,
+    borderWidth: 1,
+    borderColor: '#000055'
   },
   cardLeft: {
     flexDirection: 'row',

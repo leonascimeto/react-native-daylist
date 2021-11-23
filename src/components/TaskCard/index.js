@@ -22,7 +22,6 @@ export default function TaskCard({ data, onPress }) {
         <Text style={styles.date} >{format(new Date(data.when), 'dd/MM/yyyy')}</Text>
         <Text style={styles.time}>{format(new Date(data.when), 'HH:mm')}</Text>
       </View>
-
     </TouchableOpacity>
   );
 }
