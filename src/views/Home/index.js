@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, ActivityIndicator, Platform } from 'react-native';
 import * as Network from 'expo-network';
 import api from "../../services/api";
 import styles from './styles';
+import * as Application from 'expo-application';
 
 //componentes
 import Header from "../../components/Header";
@@ -18,9 +19,14 @@ export default function Home({ navigation }) {
   const [macaddress, setMacaddress] = useState();
 
   async function getMacAddress() {
-    const mac = await Network.getIpAddressAsync();
+    let idMobile;
+    Platform.OS === 'ios' ?
+      idMobile = await Application.getIosIdForVendorAsync()
+      :
+      idMobile = await Application.androidId;
 
-    setMacaddress(mac);
+
+    setMacaddress(idMobile);
   }
 
   async function loadTasks() {
@@ -56,7 +62,7 @@ export default function Home({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Header showNotification={true} showBack={false} pressNotification={notification} late={lateCount} />
+      <Header showNotification={true} showBack={false} pressNotification={notification} late={lateCount} navigation={navigation} />
       {/* Filtro de tarefas */}
       <View style={styles.filter}>
         <TouchableOpacity onPress={() => setFilter('all')}>

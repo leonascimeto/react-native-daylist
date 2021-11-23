@@ -12,7 +12,8 @@ import {
   Platform,
   ActivityIndicator
 } from 'react-native';
-import * as Network from 'expo-network';
+import * as Application from 'expo-application';
+
 import api from '../../services/api';
 import styles from './styles';
 
@@ -90,8 +91,12 @@ export default function Task({ navigation }) {
   }
 
   async function getMacAddress() {
-    const mac = await Network.getIpAddressAsync();
-    setMacaddress(mac);
+    let idMobile;
+    Platform.OS === 'ios' ?
+      idMobile = await Application.getIosIdForVendorAsync()
+      :
+      idMobile = await Application.androidId;
+    setMacaddress(idMobile);
     setLoading(false);
   }
 
