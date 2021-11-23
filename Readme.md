@@ -44,7 +44,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ## 🚀 Como rodar este projeto
 
 - Para clonar e executar este aplicativo, você precisará de [Git](https://git-scm.com), [NodeJs][nodejs] Instalado em seu computador.
-- Necessário executar API do projeto, segue o link do repositório: [API DAYLIST](https://git-scm.com).
+- Necessário executar API do projeto, segue o link do repositório: [API DAYLIST]().
 - Ter o Expo instalado de forma global.
 - Possuir um disposito ou emulador Android/IOS.
 - o arquivo src/services/api.js a contante baseURL deve ser alterada para o IP da rede local.
@@ -54,10 +54,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 
 ```bash
 # Clone este repositório
-$ git clone https://github.com/leonascimeto/react-pokedex.git
+$ git clone https://github.com/leonascimeto/react-native-daylist.git
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd react-pokedex
+$ cd react-native-daylist
 ```
 
 ### 🧭 Rodando a aplicação web
