@@ -2,9 +2,6 @@
 React-Native-DayList
 </h1>
 
-<h2 align="center">
-🚧 React-Native-DayList  🚀 Em Construção 🚧
-</h2>
 <p align="center">
   <a href="https://www.linkedin.com/in/leonascimentopro/">
       <img alt="Made by Leonardo" src="https://img.shields.io/badge/Made%20By-Leonardo%20Fernandes-blue">
