@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Text, View, TouchableOpacity, ScrollView, ActivityIndicator, Platform } from 'react-native';
-import * as Network from 'expo-network';
 import api from "../../services/api";
 import styles from './styles';
 import * as Application from 'expo-application';
@@ -56,7 +55,11 @@ export default function Home({ navigation }) {
   }
 
   useEffect(() => {
-    getMacAddress().then(() => loadTasks());
+    getMacAddress();
+  }, []);
+
+  useEffect(() => {
+    loadTasks();
     lateVerify();
   }, [filter, macaddress])
 
@@ -96,7 +99,7 @@ export default function Home({ navigation }) {
         <Text style={styles.titleText}>TAREFAS {filter === 'late' && ' ATRASADAS'}</Text>
       </View>
 
-      <ScrollView style={styles.content} contentContainerStyle={{ alignItems: 'center' }}>
+      <ScrollView style={styles.content} contentContainerStyle={{ alignItems: 'center', paddingBottom: 100 }}>
 
         {
           loading ?

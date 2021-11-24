@@ -134,7 +134,7 @@ export default function Task({ navigation }) {
         loading ?
           <ActivityIndicator color='#ee8855' size={50} style={{ marginTop: 150 }} />
           :
-          <ScrollView style={{ width: '100%', marginBottom: 100 }}>
+          <ScrollView style={{ width: '100%' }} contentContainerStyle={{ paddingBottom: 110 }}>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ marginVertical: 10 }}>
               {
                 typeIcons.map((img, index) => img &&
